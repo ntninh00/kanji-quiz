@@ -444,3 +444,52 @@ progress::-moz-progress-bar {
 #percentage {
     transition: all 0.3s ease-in-out;
 }
+
+#incorrect-board-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+#incorrect-board-wrapper {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#incorrect-board {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    color: #333; /* Dark text color for better readability */
+}
+
+.incorrect-entry {
+    margin-bottom: 5px;
+    color: #ff0000; /* Red color for incorrect answers */
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

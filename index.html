@@ -11,14 +11,21 @@
 </head>
 
 <body>
-
+    <div id="incorrect-board-container" style="display: none;">
+        <div id="incorrect-board-wrapper">
+            <h2>Incorrect Answers</h2>
+            <div id="incorrect-board"></div>
+            <button onclick="hideIncorrectBoard()">Try Again</button>
+        </div>
+    </div>
+    
     <!-- Quiz Section -->
     <div class="quiz-section quiz-container">
         <div id="question" class="question">loading question...</div>
         <!-- Rating and Progress Bar -->
         <div class="rating-container">
             <div class="rating">
-                <span>rating: </span><span id="correct-answers">0</span>/<span id="total-answers">0</span> (<span
+                <span>correct answers: </span><span id="correct-answers">0</span>/<span id="total-answers">0</span> (<span
                     id="percentage">0%</span>)
             </div>
             <div class="progress-bar-container">

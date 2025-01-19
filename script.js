@@ -1,7 +1,9 @@
 let currentQuestionIndex = 0;
-let kanjiData = [];  // Initialize kanjiData as an empty array
-let correctAnswers = 0;  // To track correct answers
-let totalAnswers = 0;    // To track total answers
+let kanjiData = [];
+let correctAnswers = 0;
+let totalAnsweredCorrectly = 0;
+let incorrectQuestions = [];
+let incorrectAttempts = {};
 
 // Shuffle function
 function shuffleArray(array) {
@@ -17,17 +19,15 @@ function loadQuestion() {
     const choicesElement = document.getElementById('choices');
     const nextButton = document.getElementById('next-button');
 
-    nextButton.disabled = true; // Disable next button until an answer is selected
-    choicesElement.innerHTML = ''; // Clear previous choices
+    nextButton.disabled = true;
+    choicesElement.innerHTML = '';
 
     const currentKanji = kanjiData[currentQuestionIndex];
 
-    // Randomly select whether to ask for the meaning or the reading
     const isMeaningQuestion = Math.random() < 0.5;
 
     if (isMeaningQuestion) {
         questionElement.innerText = `${currentKanji.kanji}?`;
-        // Generate choices for the meaning question
         let answerChoices = kanjiData.filter(kanji => kanji.meaning !== currentKanji.meaning);
         shuffleArray(answerChoices);
         answerChoices = answerChoices.slice(0, 3).map(kanji => kanji.meaning);
@@ -43,7 +43,6 @@ function loadQuestion() {
         });
     } else {
         questionElement.innerText = `${currentKanji.kanji}?`;
-        // Generate choices for the reading question
         let answerChoices = kanjiData.filter(kanji => kanji.reading !== currentKanji.reading);
         shuffleArray(answerChoices);
         answerChoices = answerChoices.slice(0, 3).map(kanji => kanji.reading);
@@ -63,7 +62,7 @@ function loadQuestion() {
 // Function to handle answer selection
 function selectAnswer(selected, correct, isMeaningQuestion) {
     const nextButton = document.getElementById('next-button');
-    nextButton.disabled = false; // Enable next button after an answer is selected
+    nextButton.disabled = false;
 
     document.querySelectorAll('.choice').forEach(choice => {
         choice.classList.remove('correct', 'wrong');
@@ -74,35 +73,69 @@ function selectAnswer(selected, correct, isMeaningQuestion) {
         }
     });
 
-    // Update correctAnswers and totalAnswers
+    const currentKanji = kanjiData[currentQuestionIndex];
+
     if (selected === correct) {
         correctAnswers++;
-    }
-    totalAnswers++;
+        if (!currentKanji.answeredCorrectly) {
+            currentKanji.answeredCorrectly = true;
+            totalAnsweredCorrectly++;
+        }
+    } else {
+        if (!incorrectQuestions.includes(currentKanji)) {
+            incorrectQuestions.push(currentKanji);
+        }
 
-    // Update rating and progress bar
+        const key = `${currentKanji.kanji}-${isMeaningQuestion ? 'meaning' : 'reading'}`;
+        if (incorrectAttempts[key]) {
+            incorrectAttempts[key].count++;
+        } else {
+            incorrectAttempts[key] = { kanji: currentKanji.kanji, type: isMeaningQuestion ? 'Meaning' : 'Reading', count: 1 };
+        }
+    }
+
     updateRating();
+    updateIncorrectBoard();
 }
 
 // Update Rating and Progress Bar
 function updateRating() {
-    const percentage = totalAnswers > 0 ? (correctAnswers / totalAnswers) * 100 : 0;
+    const percentage = kanjiData.length > 0 ? (totalAnsweredCorrectly / kanjiData.length) * 100 : 0;
 
-    // Update the rating text
-    document.getElementById('correct-answers').textContent = correctAnswers;
-    document.getElementById('total-answers').textContent = totalAnswers;
+    document.getElementById('correct-answers').textContent = totalAnsweredCorrectly;
+    document.getElementById('total-answers').textContent = kanjiData.length;
     document.getElementById('percentage').textContent = `${percentage.toFixed(0)}%`;
 
-    // Update the progress bar
     const progressBar = document.getElementById('progress-bar');
     progressBar.value = percentage;
 
-    // Add a class to change the color based on performance
-    if (percentage < 50) {
-        document.querySelector('.rating-container').classList.add('low-score');
-    } else {
-        document.querySelector('.rating-container').classList.remove('low-score');
+    if (percentage === 100) {
+        displayIncorrectBoard();
     }
+}
+
+// Display Incorrect Board
+function displayIncorrectBoard() {
+    const incorrectBoardContainer = document.getElementById('incorrect-board-container');
+    const incorrectBoard = document.getElementById('incorrect-board');
+    incorrectBoard.innerHTML = '';
+
+    const sortedIncorrect = Object.values(incorrectAttempts).sort((a, b) => b.count - a.count);
+    sortedIncorrect.forEach(entry => {
+        const entryElement = document.createElement('div');
+        entryElement.classList.add('incorrect-entry');
+        entryElement.innerText = `${entry.kanji} (${entry.type}) - Incorrect: ${entry.count} times`;
+        incorrectBoard.appendChild(entryElement);
+    });
+
+    incorrectBoardContainer.style.display = 'block';
+}
+
+// Hide Incorrect Board
+function hideIncorrectBoard() {
+    const incorrectBoardContainer = document.getElementById('incorrect-board-container');
+    incorrectBoardContainer.style.display = 'none';
+    startQuiz();  // Restart the quiz
 }
 
 // Update Kanji data based on pasted input
@@ -115,20 +148,20 @@ document.getElementById('update-button').addEventListener('click', () => {
         return;
     }
 
-    kanjiData = [];  // Clear the current data before updating
-
+    kanjiData = [];
     lines.forEach(line => {
         const parts = line.split(',').map(part => part.trim());
         if (parts.length >= 3) {
             const kanji = parts[0];
             const reading = parts[1];
-            const meaning = parts.slice(2).join(', ');  // Join the meaning parts
-            kanjiData.push({ kanji: kanji, reading: reading, meaning: meaning });
+            const meaning = parts.slice(2).join(', ');
+            kanjiData.push({ kanji: kanji, reading: reading, meaning: meaning, answeredCorrectly: false });
         }
     });
 
-    document.getElementById('bulk-input').value = '';  // Clear the input field after update
-    updateDataDisplay(); // Update the data display with the new data
+    document.getElementById('bulk-input').value = '';
+    updateDataDisplay();
+    updateIncorrectBoard();
 });
 
 // Update the data display section inside the spoiler
@@ -140,12 +173,23 @@ function updateDataDisplay() {
         kanjiText += `${data.kanji}, ${data.reading}, ${data.meaning}\n`;
     });
 
-    kanjiListElement.value = kanjiText; // Display the data in the text area (for copying)
+    kanjiListElement.value = kanjiText;
 }
 
 // Next button click event
 document.getElementById('next-button').addEventListener('click', () => {
-    currentQuestionIndex = (currentQuestionIndex + 1) % kanjiData.length;
+    currentQuestionIndex++;
+    if (currentQuestionIndex >= kanjiData.length) {
+        if (incorrectQuestions.length > 0) {
+            kanjiData = incorrectQuestions;
+            incorrectQuestions = [];
+            currentQuestionIndex = 0;
+            shuffleArray(kanjiData);
+        } else {
+            alert("All questions answered correctly!");
+            return;
+        }
+    }
     loadQuestion();
 });
 
@@ -153,15 +197,29 @@ document.getElementById('next-button').addEventListener('click', () => {
 document.getElementById('refresh-button').addEventListener('click', () => {
     shuffleArray(kanjiData);
     currentQuestionIndex = 0;
+    totalAnsweredCorrectly = 0;
+    correctAnswers = 0;
+    incorrectQuestions = [];
+    incorrectAttempts = {};
+    kanjiData.forEach(data => data.answeredCorrectly = false);
     loadQuestion();
+    updateRating();
+    updateIncorrectBoard();
 });
 
 // Initialize the quiz
 function startQuiz() {
     shuffleArray(kanjiData);
     currentQuestionIndex = 0;
+    totalAnsweredCorrectly = 0;
+    correctAnswers = 0;
+    incorrectQuestions = [];
+    incorrectAttempts = {};
+    kanjiData.forEach(data => data.answeredCorrectly = false);
     loadQuestion();
-    updateDataDisplay(); // Show the initial data
+    updateDataDisplay();
+    updateRating();
+    updateIncorrectBoard();
 }
 
 startQuiz();
@@ -178,40 +236,34 @@ function toggleToLearnList() {
     if (content.style.display === "none" || content.style.display === "") {
         content.style.display = "block";
         setTimeout(() => {
-            content.classList.add("open"); // Add class to trigger transition
-        }, 10); // Delay to allow style changes
+            content.classList.add("open");
+        }, 10);
     } else {
-        content.classList.remove("open"); // Remove class to trigger transition
+        content.classList.remove("open");
         setTimeout(() => {
-            content.style.display = "none"; // Hide after transition completes
-        }, 500); // Match the transition time
+            content.style.display = "none";
+        }, 500);
     }
 }
 
 // Function to copy the content of the day to the clipboard in the quiz data format
 function copyToClipboard(button) {
-    // Find the parent div containing the kanji data (all the <p> elements)
     const dayContent = button.previousElementSibling;
 
-    // Get all text content from the <p> tags inside the day
     const contentToCopy = Array.from(dayContent.getElementsByTagName('p'))
-                               .map(p => p.innerText)  // Get the text inside each <p> element
-                               .join("\n");           // Join them with line breaks
+                               .map(p => p.innerText)
+                               .join("\n");
 
-    // Format the copied content to match the quiz data format (no extra spaces)
-    const formattedContent = contentToCopy.replace(/、/g, ',');  // Replace full stops with commas
+    const formattedContent = contentToCopy.replace(/、/g, ',');
 
-    // Use the clipboard API to copy the content
     navigator.clipboard.writeText(formattedContent)
         .then(() => {
-            // Optional: Provide feedback to the user
             button.innerText = 'Copied!';
             setTimeout(() => {
                 button.innerText = 'Copy';
-            }, 1500); // Reset button text after 1.5 seconds
+            }, 1500);
         })
         .catch(err => {
             console.error('Error copying to clipboard: ', err);
-            alert('Failed to copy the content. Please try again.');
         });
 }
