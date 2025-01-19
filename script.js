@@ -155,3 +155,31 @@ function toggleToLearnList() {
         }, 500); // Match the transition time
     }
 }
+
+// Function to copy the content of the day to the clipboard in the quiz data format
+function copyToClipboard(button) {
+    // Find the parent div containing the kanji data (all the <p> elements)
+    const dayContent = button.previousElementSibling;
+
+    // Get all text content from the <p> tags inside the day
+    const contentToCopy = Array.from(dayContent.getElementsByTagName('p'))
+                               .map(p => p.innerText)  // Get the text inside each <p> element
+                               .join("\n");           // Join them with line breaks
+
+    // Format the copied content to match the quiz data format (no extra spaces)
+    const formattedContent = contentToCopy.replace(/、/g, ',');  // Replace full stops with commas
+
+    // Use the clipboard API to copy the content
+    navigator.clipboard.writeText(formattedContent)
+        .then(() => {
+            // Optional: Provide feedback to the user
+            button.innerText = 'Copied!';
+            setTimeout(() => {
+                button.innerText = 'Copy';
+            }, 1500); // Reset button text after 1.5 seconds
+        })
+        .catch(err => {
+            console.error('Error copying to clipboard: ', err);
+            alert('Failed to copy the content. Please try again.');
+        });
+}

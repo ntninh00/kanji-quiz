@@ -2,12 +2,14 @@
 <script src="script.js" defer></script>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Quiz Section -->
@@ -21,7 +23,7 @@
     <!-- Update Data Section -->
     <div class="quiz-section">
         <textarea id="bulk-input" placeholder="paste what you want to learn here"></textarea>
-        
+
     </div>
     <button id="update-button">update data</button>
 
@@ -35,47 +37,38 @@
     <!-- Show To-learn-list -->
 
     <div class="quiz-section">
-        
+
         <div class="spoiler">
             <textarea id="kanji-list" readonly></textarea>
         </div>
 
         <div class="to-learn-list">
-            <button class="spoiler-button" onclick="toggleToLearnList()">Show To-Learn List</button>
+            <button class="spoiler-button" onclick="toggleToLearnList()">show kanji list</button>
             <div class="spoiler to-learn-list-content">
                 <!-- Your week and day data will go here manually -->
                 <details class="week">
                     <summary>Week 1</summary>
                     <details class="day">
-                        <summary>Day 1</summary>
-                        <p>エンジェル・スマイル, えんじぇる・すまいる, Nụ cười thiên thần</p>
-                        <p>授乳を受ける, じゅにゅうをうける, Cho con bú</p>
-                        <p>すやすやと眠る, すやすやとねむる, Ngủ say, ngủ ngon</p>
-                        <p>微笑び, しょう, Mỉm cười</p>
-
-                        <!-- More data -->
+                      <summary>Day 1</summary>
+                      <div>
+                        <p>駆け込む, かけこむ, Chạy bổ vào, phóng về, chạy về</p>
+                        <p>放り出す, ほうりだす, Quẳng ra, ném đi, vứt</p>
+                        <p>口に押し込む, くちにおしこむ, Nhét vào miệng</p>
+                        <p>店舗, てんぽ, Cửa hàng, cửa hiệu</p>
+                        <p>店頭, てんとう, Trước của tiệm</p>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                      </div>
                     </details>
-                    <details class="day">
-                        <summary>Day 2</summary>
-                        <p>遺伝⼦, いでんし, Gen di truyền</p>
-                        <p>⽣得的, せいとくてき, Bẩm sinh, bản năng, tự nhiên</p>
-                        <p>顕在化, げんざいか, Được bộc lộ rõ ràng, hiện thực hóa</p>
-                        <p>⽣理的痙攣, せいりてきけいれん, Co giật sinh lý</p>
-                        <p>助産婦, じょさんぷ, Bà đỡ, nữ hộ sinh</p>
-                        <p>⾔い得る, いいうる, Có thể nói</p>
-                        <!-- More data -->
-                    </details>
-                    <!-- More days -->
-                </details>
+                  </details>
                 <!-- More weeks -->
             </div>
         </div>
-        
-        
-        
-            <script src="script.js"></script>
-        </body>
-        </html>
-        
-    </div>
 
+
+
+        <script src="script.js"></script>
+</body>
+
+</html>
+
+</div>

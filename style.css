@@ -248,7 +248,7 @@ details[open] summary {
 .to-learn-list-content {
     display: none;
     margin-top: 20px;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     opacity: 0;
     max-height: 0;
     overflow: hidden;
@@ -258,7 +258,7 @@ details[open] summary {
 /* When the spoiler is open, we add opacity and max-height */
 .to-learn-list-content.open {
     opacity: 1;
-    max-height: 1000px; /* You can adjust this if needed */
+    max-height: 10000px; /* You can adjust this if needed */
 }
 
 /* Spoiler Button */
@@ -282,7 +282,7 @@ details {
     margin: 10px 0;
     padding: 10px;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #686868;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -366,4 +366,24 @@ details p {
 
 .meaning {
     color: #888;
+}
+/* Style for the Copy Button */
+.copy-btn {
+    background-color: #007BFF;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+}
+
+.copy-btn:hover {
+    background-color: #0056b3;
+}
+
+.copy-btn:active {
+    background-color: #00408a;
 }
