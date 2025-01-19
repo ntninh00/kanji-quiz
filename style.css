@@ -1,0 +1,369 @@
+/* General Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2e2e2e;  /* Default dark background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    padding-top: 50px;
+    color: #f0f0f0;  /* Default light text */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #f0f0f0;  /* Default light text */
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #2e2e2e;
+    color: #f0f0f0;
+}
+
+.quiz-section {
+    width: 100%;
+    max-width: 700px;
+    background-color: #3c3c3c;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Question Styling */
+.question {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Choices Styling */
+.choices {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.choice {
+    padding: 18px;
+    border-radius: 8px;
+    background-color: #5e5e5e;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.choice:hover {
+    background-color: #007bff;
+    color: white;
+    transform: translateY(-5px);
+}
+
+.choice.correct {
+    background-color: #28a745;
+    color: white;
+}
+
+.choice.wrong {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Buttons */
+button {
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:disabled {
+    background-color: #bbb;
+    cursor: not-allowed;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+button.dark-mode {
+    background-color: #444;
+    color: white;
+}
+
+button.dark-mode:hover {
+    background-color: #222;
+}
+
+
+/* Input Area */
+#bulk-input, #kanji-list {
+    width: 100%;
+    max-width: 700px;
+    padding: 15px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+#bulk-input:focus, #kanji-list:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+#kanji-list {
+    height: 200px;
+    resize: vertical;
+}
+
+.spoiler {
+    display: none;
+    margin-top: 20px;
+}
+
+.spoiler-button {
+    cursor: pointer;
+
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+/* Sample Data Section */
+.sample-data {
+    margin-top: 30px;
+    background-color: #f7f7f72a;
+    padding: 20px;
+    border-radius: 8px;
+    border: 0px solid #ddd;
+    font-family: 'Courier New', monospace;
+    white-space: pre-wrap;
+    box-sizing: border-box;
+}
+
+/* Dark Mode Textarea */
+textarea.dark-mode {
+    background-color: #3c3c3c;
+    color: #f0f0f0;
+    border: 1px solid #555;
+}
+
+/* Dark Mode Responsive */
+@media (max-width: 768px) {
+    .quiz-section {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .question {
+        font-size: 1.5rem;
+    }
+
+    .choice {
+        font-size: 1rem;
+    }
+
+    .sample-data {
+        font-size: 0.9rem;
+    }
+}
+
+/* Container for To-Learn List */
+.to-learn-list-content {
+    display: none;
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Spoiler Button */
+.spoiler-button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.spoiler-button:hover {
+    background-color: #45a049;
+}
+
+/* Week & Day Container */
+details {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #686868;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+summary {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+details[open] summary {
+    color: #4CAF50; /* Green when open */
+}
+
+/* Container for To-Learn List */
+.to-learn-list-content {
+    display: none;
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+}
+
+/* When the spoiler is open, we add opacity and max-height */
+.to-learn-list-content.open {
+    opacity: 1;
+    max-height: 1000px; /* You can adjust this if needed */
+}
+
+/* Spoiler Button */
+.spoiler-button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.spoiler-button:hover {
+    background-color: #45a049;
+}
+
+/* Week & Day Container */
+details {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+summary {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+details[open] summary {
+    color: #4CAF50; /* Green when open */
+}
+
+/* Card-style Layout for Kanji Data */
+.to-learn-list-content div p {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.to-learn-list-content div p:hover {
+    transform: scale(1.02);
+    background-color: #e9e9e9;
+}
+
+.to-learn-list-content div p span {
+    font-size: 16px;
+    color: #555;
+}
+
+.to-learn-list-content div p .kanji {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.to-learn-list-content div p .meaning {
+    font-size: 16px;
+    color: #777;
+}
+
+/* Indented Kanji Data */
+.to-learn-list-content div p span.reading {
+    font-style: italic;
+    color: #666;
+}
+
+/* Week and Day Formatting */
+details.week {
+    padding-left: 20px;
+}
+
+details.day {
+    padding-left: 20px;
+}
+
+/* Overall padding for better spacing */
+details p {
+    margin: 5px 0;
+    padding: 5px;
+}
+
+/* Tooltip Style for Kanji Data */
+.kanji {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.reading {
+    font-style: italic;
+    color: #666;
+}
+
+.meaning {
+    color: #888;
+}

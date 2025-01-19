@@ -1,0 +1,2 @@
+console.log('Bulk Input:', bulkInput);
+console.log('Updated kanjiData:', kanjiData);

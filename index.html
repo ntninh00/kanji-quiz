@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Quiz Section -->
+    <div class="quiz-section quiz-container">
+        <div id="question" class="question">loading question...</div>
+        <div id="choices" class="choices"></div>
+        <button id="next-button" disabled>next</button>
+        <button id="refresh-button">refresh</button>
+    </div>
+
+    <!-- Update Data Section -->
+    <div class="quiz-section">
+        <textarea id="bulk-input" placeholder="paste kanji data here..."></textarea>
+        
+    </div>
+    <button id="update-button">update data</button>
+
+    <!-- Show Current Data -->
+    <div class="quiz-section">
+        <button class="spoiler-button" onclick="toggleSpoiler()">show current data</button>
+        <div class="spoiler">
+            <textarea id="kanji-list" readonly></textarea>
+        </div>
+            <!-- Sample Data Format -->
+    <div class="sample-data">
+刈る, かる, cắt, gọt, tỉa
+釣る, つる, câu cá
+撮る, とる, chụp ảnh
+振る, ふる, vẫy, rắc, chỉ định (công việc)
+彫る, ほる, khắc, chạm, tạc
+盛る, もる, làm đầy, đổ đầy, phục vụ
+    </div>
+    </div>
+    <!-- Show To-learn-list -->
+
+    <div class="quiz-section">
+        
+        <div class="spoiler">
+            <textarea id="kanji-list" readonly></textarea>
+        </div>
+
+        <div class="to-learn-list">
+            <button class="spoiler-button" onclick="toggleToLearnList()">Show To-Learn List</button>
+            <div class="spoiler to-learn-list-content">
+                <!-- Your week and day data will go here manually -->
+                <details class="week">
+                    <summary>Week 1</summary>
+                    <details class="day">
+                        <summary>Day 1</summary>
+                        <p>エンジェル・スマイル, えんじぇる・すまいる, Nụ cười thiên thần</p>
+                        <p>授乳を受ける, じゅにゅうをうける, Cho con bú</p>
+                        <p>すやすやと眠る, すやすやとねむる, Ngủ say, ngủ ngon</p>
+                        <p>微笑び, しょう, Mỉm cười</p>
+
+                        <!-- More data -->
+                    </details>
+                    <details class="day">
+                        <summary>Day 2</summary>
+                        <p>遺伝⼦, いでんし, Gen di truyền</p>
+                        <p>⽣得的, せいとくてき, Bẩm sinh, bản năng, tự nhiên</p>
+                        <p>顕在化, げんざいか, Được bộc lộ rõ ràng, hiện thực hóa</p>
+                        <p>⽣理的痙攣, せいりてきけいれん, Co giật sinh lý</p>
+                        <p>助産婦, じょさんぷ, Bà đỡ, nữ hộ sinh</p>
+                        <p>⾔い得る, いいうる, Có thể nói</p>
+                        <!-- More data -->
+                    </details>
+                    <!-- More days -->
+                </details>
+                <!-- More weeks -->
+            </div>
+        </div>
+        
+        
+        
+            <script src="script.js"></script>
+        </body>
+        </html>
+        
+    </div>
+
