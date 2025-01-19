@@ -91,6 +91,7 @@ body.dark-mode {
 /* Buttons */
 button {
     padding: 12px 25px;
+    font-family: 'Montserrat', sans-serif;
     background-color: #007bff;
     color: white;
     border: none;
@@ -304,7 +305,7 @@ details[open] summary {
     justify-content: space-between;
     margin: 10px 0;
     padding: 10px;
-    background-color: #f4f4f4;
+    background-color: rgb(88, 88, 88);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, background-color 0.3s ease;
@@ -312,7 +313,7 @@ details[open] summary {
 
 .to-learn-list-content div p:hover {
     transform: scale(1.02);
-    background-color: #e9e9e9;
+    background-color: #414141;
 }
 
 .to-learn-list-content div p span {
@@ -386,4 +387,60 @@ details p {
 
 .copy-btn:active {
     background-color: #00408a;
+}
+
+/* Rating container */
+.rating-container {
+    margin: 20px 0;
+    padding: 10px;
+
+
+
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Rating text */
+.rating {
+    font-size: 20px;
+    font-weight: bold;
+    color: #b6b6b6;
+}
+
+/* Progress bar */
+.progress-bar-container {
+    margin-top: 15px;
+}
+
+progress {
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    appearance: none;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+}
+
+progress::-webkit-progress-value {
+    background-color: #4caf50;
+    border-radius: 5px;
+}
+
+progress::-moz-progress-bar {
+    background-color: #4caf50;
+    border-radius: 5px;
+}
+
+/* Reducing the background color for low scores */
+.low-score progress::-webkit-progress-value,
+.low-score progress::-moz-progress-bar {
+    background-color: #f44336;  /* Red for low scores */
+}
+
+/* Adding some smooth transition for percentage */
+#percentage {
+    transition: all 0.3s ease-in-out;
 }

@@ -1,5 +1,7 @@
 let currentQuestionIndex = 0;
 let kanjiData = [];  // Initialize kanjiData as an empty array
+let correctAnswers = 0;  // To track correct answers
+let totalAnswers = 0;    // To track total answers
 
 // Shuffle function
 function shuffleArray(array) {
@@ -71,6 +73,36 @@ function selectAnswer(selected, correct, isMeaningQuestion) {
             choice.classList.add('wrong');
         }
     });
+
+    // Update correctAnswers and totalAnswers
+    if (selected === correct) {
+        correctAnswers++;
+    }
+    totalAnswers++;
+
+    // Update rating and progress bar
+    updateRating();
+}
+
+// Update Rating and Progress Bar
+function updateRating() {
+    const percentage = totalAnswers > 0 ? (correctAnswers / totalAnswers) * 100 : 0;
+
+    // Update the rating text
+    document.getElementById('correct-answers').textContent = correctAnswers;
+    document.getElementById('total-answers').textContent = totalAnswers;
+    document.getElementById('percentage').textContent = `${percentage.toFixed(0)}%`;
+
+    // Update the progress bar
+    const progressBar = document.getElementById('progress-bar');
+    progressBar.value = percentage;
+
+    // Add a class to change the color based on performance
+    if (percentage < 50) {
+        document.querySelector('.rating-container').classList.add('low-score');
+    } else {
+        document.querySelector('.rating-container').classList.remove('low-score');
+    }
 }
 
 // Update Kanji data based on pasted input
