@@ -256,29 +256,32 @@ function toggleToLearnList() {
 }
 
 function copyToClipboard(button) {
-    // Find the next sibling containing the kanji data
+    // Ensure the next sibling is the container with <p> tags
     const dayContent = button.nextElementSibling;
 
-    // Create a temporary text area to copy the content
-    const textArea = document.createElement('textarea');
+    // Check if the next sibling exists and contains the <p> elements
+    if (dayContent && dayContent.classList.contains('kanji-container')) {
+        // Create a temporary text area to copy the content
+        const textArea = document.createElement('textarea');
+        textArea.value = Array.from(dayContent.getElementsByTagName('p'))
+                              .map(p => p.innerText)  // Get the text inside each <p> element
+                              .join("\n");            // Join them with line breaks
 
-    // Get all text content from the <p> tags inside the dayContent
-    textArea.value = Array.from(dayContent.getElementsByTagName('p'))
-                          .map(p => p.innerText)  // Get the text inside each <p> element
-                          .join("\n");            // Join them with line breaks
+        document.body.appendChild(textArea);
 
-    document.body.appendChild(textArea);
+        // Select the text and copy it to the clipboard
+        textArea.select();
+        document.execCommand('copy');
 
-    // Select the text and copy it to the clipboard
-    textArea.select();
-    document.execCommand('copy');
+        // Remove the temporary text area after copying
+        document.body.removeChild(textArea);
 
-    // Remove the temporary text area after copying
-    document.body.removeChild(textArea);
-
-    // Optional: Provide feedback to the user
-    button.innerText = 'Copied!';
-    setTimeout(() => {
-        button.innerText = 'Copy';
-    }, 1500); // Reset button text after 1.5 seconds
+        // Optional: Provide feedback to the user
+        button.innerText = 'Copied!';
+        setTimeout(() => {
+            button.innerText = 'Copy';
+        }, 1500); // Reset button text after 1.5 seconds
+    } else {
+        console.error('Kanji container not found or incorrect structure.');
+    }
 }
