@@ -255,21 +255,17 @@ function toggleToLearnList() {
     }
 }
 
-// Function to copy the content of the day to the clipboard in the quiz data format
 function copyToClipboard(button) {
-    // Find the parent div containing the kanji data (all the <p> elements)
-    const dayContent = button.previousElementSibling;
+    // Find the next sibling containing the kanji data
+    const dayContent = button.nextElementSibling;
 
     // Create a temporary text area to copy the content
     const textArea = document.createElement('textarea');
-    
-    // Get all text content from the <p> tags inside the day
+
+    // Get all text content from the <p> tags inside the dayContent
     textArea.value = Array.from(dayContent.getElementsByTagName('p'))
                           .map(p => p.innerText)  // Get the text inside each <p> element
-                          .join("\n");           // Join them with line breaks
-
-    // Format the copied content to match the quiz data format (no extra spaces)
-    textArea.value = textArea.value.replace(/、/g, ',');  // Replace full stops with commas
+                          .join("\n");            // Join them with line breaks
 
     document.body.appendChild(textArea);
 
