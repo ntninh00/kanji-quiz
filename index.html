@@ -18,12 +18,12 @@
     </form>
 </div>
 
- <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Quiz</title>
     <link rel="stylesheet" href="style.css">
-</head> 
+</head>
 
 
 
@@ -47,6 +47,7 @@
     <!-- Quiz Section -->
     <div class="quiz-section quiz-container">
         <div id="question" class="question">loading question...</div>
+        <div id="kanji-details" style="display: none;"></div>
         <!-- Rating and Progress Bar -->
         <div class="rating-container">
             <div class="rating">
@@ -292,59 +293,153 @@
                 </details>
 
                 <details class="week">
-                    <summary>week 3</summary>
+                    <summary>week 7</summary>
                     <details class="day">
-                        <summary>day 1</summary>
+                        <summary>day 2</summary>
                         <button class="copy-btn" onclick="copyToClipboard(this)">copy all</button>
                         <div class="kanji-container">
-                            <p>妻子, さいし, vợ con, thê tử</p>
-                            <p>家庭を築く, かていをきずく, xây dựng gia đình</p>
-                            <p>師弟, してい, thầy trò</p>
-                            <p>師匠, ししょう, sư phụ</p>
-                            <p>弟子, でし, đệ tử</p>
-                            <p>国王, こくおう, nhà vua</p>
-                            <p>側近, そっきん, thuộc hạ, người thân cận</p>
-                            <p>家族ぐるみ, かぞくぐるみ, cả gia đình, toàn bộ gia đình</p>
-                            <p>来賓, らいひん, khách mời</p>
-                            <p>もてなす, もてなす, tiếp đãi, đãi khách</p>
-                            <p>しきたり, しきたり, tiền lệ, phong tục, tập quán</p>
-                            <p>慣習, かんしゅう, phong tục, tập quán</p>
-                            <p>風習, ふうしゅう, phong tục, tập quán</p>
-                            <p>未練, みれん, luyến tiếc, tiếc nuối</p>
-                            <p>執着, しゅうちゃく, quyến luyến, gắn chặt</p>
-                            <p>心が弾む, こころがはずむ, trái tim rộn ràng, vui vẻ</p>
-                            <p>引きずる, ひきずる, níu kéo, kéo lê, lưu luyến</p>
-                            <p>気持ちを切り替える, きもちをきりかえる, thay đổi tâm trạng</p>
-                            <p>ライバル同士, ライバルどうし, đối thủ</p>
-                            <p>敵同士, てきどうし, kẻ địch</p>
-                            <p>街ぐるみ, まちぐるみ, toàn thị trấn, thành phố</p>
-                            <p>打ち解ける, うちとける, nói chuyện cởi mở, thân quen</p>
-                            <p>切り出す, きりだす, mở đầu, bắt đầu</p>
-                            <p>切り上げる, きりあげる, kết thúc, làm tròn số chẵn</p>
-                            <p>急遽, きゅきょ, vội vã, đột xuất</p>
-                            <p>余程, よほど, khá là, tương đối, quá mức</p>
-                            <p>どぎまぎ, どぎまぎ, bối rối, luống cuống</p>
-                            <p>先ごろ, さきごろ, gần đây, vài ngày trước</p>
-                            <p>就任する, しゅうにんする, nhậm chức</p>
-                            <p>円満, えんまん, viên mãn, trọn vẹn</p>
-                            <p>厳か, おごそか, trang trọng, uy nghiêm</p>
-                            <p>なだらか, なだらか, thoai thoải, trôi chảy, không dốc</p>
-                            <p>華やか, はなやか, lộng lẫy, tráng lệ</p>
-                            <p>規制, きせい, quy định</p>
-                            <p>国家思想, こっかしそう, hệ tư tưởng dân tộc</p>
-                            <p>家父長制度, かふちょうせいど, chế độ phụ hệ, gia trưởng</p>
-                            <p>目に見える, めにみえる, rõ ràng, ai cũng thấy, trông thấy</p>
-                            <p>モラル, モラル, đạo đức</p>
-                            <p>支配, しはい, chi phối, kiểm soát, cai trị</p>
-                            <p>美名, びめい, tiếng thơm</p>
-                            <p>見えざる手, みえざるて, bàn tay vô hình, quyền lực</p>
-                            <p>活字, かつじ, chữ in</p>
-                            <p>だとすると, だとすると, nếu vậy thì</p>
-                            <p>主体性, しゅたいせい, tính độc lập, tính cá nhân</p>
-                            <p>価値観, かちかん, giá trị quan</p>
-                            <p>築き上げる, きずきあげる, xây dựng lên</p>
-                            <p>どうか, どうか, nhất định</p>
-                            <p>尊ぶ, とうとぶ, coi trọng, đánh giá cao</p>
+                            <p>移行, いこう, di trú, chuyển tiếp</p>
+                            <p>委託, いたく, ủy thác</p>
+                            <p>違反, いはん, vi phạm</p>
+                            <p>依頼, いらい, nhờ cậy, yêu cầu</p>
+                            <p>汚染, おせん, ô nhiễm</p>
+                            <p>加減, かげん, gia giảm, điều chỉnh</p>
+                            <p>企画, きかく, kế hoạch</p>
+                            <p>棄権, きけん, bỏ phiếu trắng, hủy quyền</p>
+                            <p>記載, きさい, ghi chép, viết</p>
+                            <p>規制, きせい, quy chế</p>
+                            <p>偽造, ぎぞう, ngụy tạo, giả mạo</p>
+                            <p>誤解, ごかい, hiểu sai, hiểu lầm</p>
+                            <p>故障, こしょう, trục trặc, hỏng hóc</p>
+                            <p>誇張, こちょう, khoa trương, phóng đại</p>
+                            <p>雇用, こよう, tuyển dụng</p>
+                            <p>孤立, こりつ, cô lập</p>
+                            <p>作用, さよう, tác dụng</p>
+                            <p>飼育, しいく, chăn nuôi</p>
+                            <p>自覚, じかく, tự giác</p>
+                            <p>志向, しこう, chí hướng</p>
+                            <p>思考, しこう, suy nghĩ</p>
+                            <p>施行, しこう・せこう, thực hiện, thi hành</p>
+                            <p>試行, しこう, thử nghiệm</p>
+                            <p>視察, しさつ, thị sát</p>
+                            <p>辞退, じたい, từ chối, khước từ</p>
+                            <p>指摘, してき, chỉ trích</p>
+                            <p>自慢, じまん, tự mãn</p>
+                            <p>謝罪, しゃざい, tạ tội</p>
+                            <p>謝絶, しゃぜつ, cự tuyệt, từ chối</p>
+                            <p>修行, しゅぎょう, tu nghiệp, tu hành</p>
+                            <p>主張, しゅちょう, chủ trương</p>
+                            <p>主導, しゅどう, chủ đạo</p>
+                            <p>樹立, じゅりつ, thành lập</p>
+                            <p>助言, じょげん, lời khuyên</p>
+                            <p>処罰, しょばつ, xử phạt</p>
+                            <p>署名, しょめい, chữ ký, đề tên</p>
+                            <p>所有, しょゆう, sở hữu</p>
+                            <p>是正, ぜせい, sửa cho đúng, làm cho ngay ngắn</p>
+                            <p>訴訟, そしょう, kiện tụng, thưa kiện</p>
+                            <p>打開, だかい, công phá, vượt qua</p>
+                            <p>妥協, だきょう, thỏa hiệp</p>
+                            <p>把握, はあく, nắm bắt</p>
+                            <p>派遣, はけん, phái cử</p>
+                            <p>避難, ひなん, lánh nạn, tị nạn</p>
+                            <p>非難, ひなん, chỉ trích, phê bình</p>
+                            <p>披露, ひろう, công khai, tuyên bố</p>
+                            <p>疲労, ひろう, mệt mỏi</p>
+                            <p>普及, ふきゅう, phổ biến, phổ cập</p>
+                            <p>負傷, ふしょう, bị thương</p>
+                            <p>侮辱, ぶじょく, lăng mạ, xỉ nhục</p>
+                            <p>負担, ふたん, gánh vác</p>
+                            <p>赴任, ふにん, nhận chức</p>
+                            <p>腐敗, ふはい, hủ bại, mục nát</p>
+                            <p>扶養, ふよう, cấp dưỡng</p>
+                            <p>保管, ほかん, bảo quản</p>
+                            <p>補充, ほじゅう, bổ sung</p>
+                            <p>募集, ぼしゅう, chiêu mộ, tuyển mộ</p>
+                            <p>保障, ほしょう, bảo đảm</p>
+                            <p>補償, ほしょう, bồi thường</p>
+                            <p>摩擦, まさつ, ma sát</p>
+                            <p>矛盾, むじゅん, mâu thuẫn</p>
+                            <p>模索, もさく, dò dẫm</p>
+                            <p>移住, いじゅう, di trú</p>
+                            <p>依存, いぞん, dựa vào, phụ thuộc</p>
+                            <p>異動, いどう, dời chỗ, thay đổi, chuyển bộ phận</p>
+                            <p>化合, かごう, hợp chất hóa học</p>
+                            <p>加入, かにゅう, gia nhập</p>
+                            <p>議決, ぎけつ, nghị quyết</p>
+                            <p>記述, きじゅつ, viết mô tả</p>
+                            <p>寄贈, きぞう, tặng, biếu</p>
+                            <p>規定, きてい, quy định</p>
+                            <p>居住, きょじゅう, cư trú, sinh sống</p>
+                            <p>拒絶, きょぜつ, cự tuyệt</p>
+                            <p>許容, きょよう, chấp nhận, cho phép</p>
+                            <p>区画, くかく, khu đất, ngăn chia</p>
+                            <p>護衛, ごえい, bảo vệ, hộ tống</p>
+                            <p>死刑, しけい, tử hình</p>
+                            <p>辞職, じしょく, từ chức</p>
+                            <p>持続, じぞく, tiếp diễn, kéo dài</p>
+                            <p>志望, しぼう, nguyện vọng</p>
+                            <p>始末, しまつ, giải quyết, xử lý, tiết kiệm, kết cục</p>
+                            <p>主催, しゅさい, tổ chức, chủ trì</p>
+                            <p>取材, しゅざい, lấy tin tức</p>
+                            <p>所属, しょぞく, thuộc về</p>
+                            <p>除外, じょがい, ngoại trừ</p>
+                            <p>徐行, じょこう, giảm tốc độ, hãm lại</p>
+                            <p>処分, しょぶん, trừng phạt, xử lý, vứt</p>
+                            <p>自立, じりつ, tự lập</p>
+                            <p>指令, しれい, chỉ thị, mệnh lệnh</p>
+                            <p>妥結, だけつ, thỏa thuận</p>
+                            <p>貯蓄, ちょちく, tiết kiệm (tiền)</p>
+                            <p>治療, ちりょう, điều trị</p>
+                            <p>破壊, はかい, phá hoại</p>
+                            <p>破損, はそん, hư tổn</p>
+                            <p>破裂, はれつ, phá vỡ</p>
+                            <p>悲観, ひかん, bi quan</p>
+                            <p>否決, ひけつ, phủ quyết</p>
+                            <p>微笑, びしょう, mỉm cười</p>
+                            <p>比例, ひれい, tỉ lệ</p>
+                            <p>布告, ふこく, tuyên bố, bố cáo</p>
+                            <p>武装, ぶそう, vũ trang</p>
+                            <p>捕獲, ほかく, giành được, bắt được</p>
+                            <p>補給, ほきゅう, cung cấp thêm</p>
+                            <p>募金, ぼきん, tiền quyên góp</p>
+                            <p>舗装, ほそう, lát đường</p>
+                            <p>補足, ほそく, bổ sung</p>
+                            <p>保養, ほよう, bảo dưỡng</p>
+                            <p>模倣, もほう, mô phỏng, bắt chước</p>
+                            <p>預金, よきん, tiền gửi ngân hàng</p>
+                            <p>予言, よげん, nói trước, điềm báo trước</p>
+                            <p>移植, いしょく, cấy ghép</p>
+                            <p>遺伝, いでん, di truyền</p>
+                            <p>会釈, えしゃく, cúi đầu, cúi chào</p>
+                            <p>祈願, きがん, cầu khấn, nguyện cầu</p>
+                            <p>棄却, ききゃく, bác bỏ</p>
+                            <p>偽装, ぎそう, ngụy trang, cải trang</p>
+                            <p>解毒, げどく, giải độc</p>
+                            <p>懸念, けねん, lo lắng, lo sợ</p>
+                            <p>下落, げらく, sụt giảm</p>
+                            <p>個室, こしつ, phòng riêng</p>
+                            <p>挫折, ざせつ, sụp đổ, thất bại</p>
+                            <p>左遷, させん, giáng chức, hạ bậc</p>
+                            <p>作動, さどう, thao tác, sử dụng (máy móc)</p>
+                            <p>自炊, じすい, tự nấu</p>
+                            <p>自重, じちょう, tự trọng</p>
+                            <p>遮断, しゃだん, ngắt, làm gián đoạn</p>
+                            <p>授与, じゅよ, trao tặng</p>
+                            <p>受領, じゅりょう, nhận lãnh, tiếp nhận</p>
+                            <p>是認, ぜにん, tán thành, chấp nhận</p>
+                            <p>疎外, そがい, xa lánh, ghẻ lạnh</p>
+                            <p>阻害, そがい, cản trở, trở ngại</p>
+                            <p>遅延, ちえん, trì hoãn</p>
+                            <p>波及, はきゅう, lan rộng</p>
+                            <p>破綻, はたん, sụp đổ, phá sản</p>
+                            <p>破滅, はめつ, tiêu tan, đổ nát</p>
+                            <p>批准, ひじゅん, phê chuẩn</p>
+                            <p>浮上, ふじょう, trồi lên, nổi lên</p>
+                            <p>魅惑, みわく, quyến rũ, mê hoặc</p>
+                            <p>癒着, ゆちゃく, dính chặt, liền lại</p>
+                            <p>由来, ゆらい, nguồn gốc, gốc gác</p>
+
+
                         </div>
                     </details>
                 </details>

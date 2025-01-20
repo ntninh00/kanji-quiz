@@ -202,6 +202,64 @@ document.getElementById('next-button').addEventListener('click', () => {
     loadQuestion();
 });
 
+// Function to handle answer selection with kanji details reveal
+function selectAnswer(selected, correct, isMeaningQuestion) {
+    const nextButton = document.getElementById('next-button');
+    nextButton.disabled = false;
+
+    document.querySelectorAll('.choice').forEach(choice => {
+        choice.classList.remove('correct', 'wrong');
+        if (choice.innerText === correct) {
+            choice.classList.add('correct');
+        } else if (choice.innerText === selected) {
+            choice.classList.add('wrong');
+        }
+    });
+
+    const currentKanji = kanjiData[currentQuestionIndex];
+
+    if (selected === correct) {
+        correctAnswers++;
+        if (!currentKanji.answeredCorrectly) {
+            currentKanji.answeredCorrectly = true;
+            totalAnsweredCorrectly++;
+        }
+    } else {
+        if (!incorrectQuestions.includes(currentKanji)) {
+            incorrectQuestions.push(currentKanji);
+        }
+
+        // Increment incorrect attempts count
+        const key = `${currentKanji.kanji}-${isMeaningQuestion ? 'meaning' : 'reading'}`;
+        if (incorrectAttempts[key]) {
+            incorrectAttempts[key].count++;
+        } else {
+            incorrectAttempts[key] = { kanji: currentKanji.kanji, type: isMeaningQuestion ? 'Meaning' : 'Reading', count: 1 };
+        }
+    }
+
+    updateRating();
+    updateIncorrectBoard();
+
+    // Display kanji details on answer selection
+    revealKanjiDetails(currentKanji);
+}
+
+// Function to reveal kanji details
+function revealKanjiDetails(kanji) {
+    const detailsContainer = document.getElementById('kanji-details');
+    detailsContainer.innerHTML = `
+        <p>${kanji.reading}</p>
+        <p>${kanji.meaning}</p>
+    `;
+    detailsContainer.style.display = 'block';
+}
+
+function revealAnswer() {
+    const kanjiInfo = document.getElementById('kanji-info');
+    kanjiInfo.style.display = 'block';
+}
+
 // Refresh button to reshuffle and start the quiz again
 document.getElementById('refresh-button').addEventListener('click', () => {
     shuffleArray(kanjiData);
