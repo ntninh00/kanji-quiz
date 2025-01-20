@@ -110,11 +110,11 @@ function updateRating() {
     const progressBar = document.getElementById('progress-bar');
     progressBar.value = percentage;
 
-    if (percentage < 50) {
+/*     if (percentage < 50) {
         document.querySelector('.rating-container').classList.add('low-score');
     } else {
         document.querySelector('.rating-container').classList.remove('low-score');
-    }
+    } */
 
     if (percentage >= 100) {
         displayIncorrectBoard();

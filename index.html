@@ -11,17 +11,19 @@
         <label for="password">password:</label>
         <input type="password" id="password" required>
         <button type="submit">login</button>
-        <h3><p>note: please do not use personal or sensitive passwords. </p>
-        <p>this system is for storing quiz results and is not secure for sensitive information.</p></h3>
+        <h3>
+            <p>note: please do not use personal or sensitive passwords. </p>
+            <p>this system is for storing quiz results and is not secure for sensitive information.</p>
+        </h3>
     </form>
 </div>
 
-<!-- <head>
+ <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Quiz</title>
     <link rel="stylesheet" href="style.css">
-</head> -->
+</head> 
 
 
 
@@ -41,15 +43,15 @@
             <button onclick="hideIncorrectBoard()">redo incorrect questions</button>
         </div>
     </div>
-    
+
     <!-- Quiz Section -->
     <div class="quiz-section quiz-container">
         <div id="question" class="question">loading question...</div>
         <!-- Rating and Progress Bar -->
         <div class="rating-container">
             <div class="rating">
-                <span>correct answers: </span><span id="correct-answers">0</span>/<span id="total-answers">0</span> (<span
-                    id="percentage">0%</span>)
+                <span>correct answers: </span><span id="correct-answers">0</span>/<span id="total-answers">0</span>
+                (<span id="percentage">0%</span>)
             </div>
             <div class="progress-bar-container">
                 <progress id="progress-bar" value="0" max="100"></progress>
@@ -62,7 +64,8 @@
 
     <!-- Update Data Section -->
     <div class="quiz-section">
-        <textarea id="bulk-input" placeholder="paste data in the format 'kanji, reading, meaning'. one entry per line. update data and refresh then you're good to go."></textarea>
+        <textarea id="bulk-input"
+            placeholder="paste data in the format 'kanji, reading, meaning'. one entry per line. update data and refresh then you're good to go."></textarea>
 
     </div>
     <button id="update-button">update data</button>
@@ -88,94 +91,265 @@
             <div class="spoiler to-learn-list-content">
                 <!-- Your week and day data will go here manually -->
                 <details class="week">
-                    <summary>week 1</summary>
+                    <summary>week 3</summary>
                     <details class="day">
                         <summary>day 1</summary>
                         <button class="copy-btn" onclick="copyToClipboard(this)">copy all</button>
                         <div class="kanji-container">
-                            <p>駆け込む, かけこむ, Chạy bổ vào, phóng về, chạy về</p>
-                            <p>放り出す, ほうりだす, Quẳng ra, ném đi, vứt</p>
-                            <p>口に押し込む, くちにおしこむ, Nhét vào miệng</p>
-                            <p>店舗, てんぽ, Cửa hàng, cửa hiệu</p>
-                            <p>店頭, てんとう, Trước của tiệm</p>
-                            <p>一目見る, ひとめみる, Nhìn lướt qua</p>
-                            <p>大好物, だいこうぶつ, N yêu thích</p>
-                            <p>選挙戦, せんきょせん, Tranh cử</p>
-                            <p>殺到, さっとう, Chen lấn, dồn dập</p>
-                            <p>一口, ひとくち, Một miếng</p>
-                            <p>吐き出す, はきだす, Nôn ra</p>
-                            <p>請求書, せいきゅうしょ, Hóa đơn thanh toán</p>
-                            <p>生き延びる, いきのびる, Sống sót</p>
-                            <p>発展途上期, はってんとじょうき, Giai đoạn đang phát triển</p>
-                            <p>生き生きとしている, いきいきとしている, Sinh động, sống động, tràn đầy sức sống</p>
-                            <p>不況, ふきょう, Suy thoái, khủng hoảng kinh tế</p>
-                            <p>売れ行き, うれゆき, Doanh số bán hàng</p>
-                            <p>合併, がっぺい, Sáp nhập</p>
-                            <p>統合, とうごう, Thống nhất</p>
-                            <p>綿密, めんみつ, Kỹ lưỡng, chi tiết</p>
-                            <p>自家製, じかせい, Sản phẩm nhà làm</p>
-                            <p>気が済む, きがすむ, Hài lòng, nhẹ nhõm</p>
-                            <p>縁を切る, えんをきる, Cắt đứt quan hệ</p>
-                            <p>公式, こうしき, Chính thức</p>
-                            <p>末日, まつじつ, Ngày cuối của~</p>
-                            <p>願書, がんしょ, Đơn đăng ký thi tuyển, nhập học</p>
-                            <p>遠出, とおで, Tham quan, du ngoại, đi chơi xa</p>
-                            <p>几帳面, きちょうめん, Ngăn nắp, cẩn thận, đúng giờ</p>
-                            <p>大雑把, おおざっぱ, Qua loa, sơ sài, hời hợt, đại khái</p>
-                            <p>きちっとした, きちっとした, Chỉnh chu, chính xác, hoàn hảo</p>
-                            <p>雑・いい加減・ルーズ, ざつ・いいかげん・ルーズ, Cẩu thả, sơ sài, vô trách nhiệm, lề mề</p>
-                            <p>生真面目＝＞不真面目, きまじめ＝＞ふまじめ, Rất nghiêm túc > không nghiêm túc, đứng đắn</p>
-                            <p>品がいい・上品・気品がいい, ひんがいい・じょうひん・きひんがいい, Tao nhã, Lịch thiệp, thanh lịch</p>
-                            <p>品が悪い・下品, ひんがわるい・げひん, Hạ lưu, hạ đẳng, thiếu lịch sự, kém sang, đê tiện</p>
-                            <p>冷淡, れいたん, Lạnh lùng, khó ưa</p>
-                            <p>冷酷, れいこく, Lạnh lùng, tàn nhẫn</p>
-                            <p>愛想がいい＝＞悪い・無愛想, あいそうがいい・わるい・ぶあいそう, Dễ thương, dễ gần, tốt bụng > khó gần, mất cảm tình</p>
-                            <p>社交的＝＞非社交的, しゃこうてき＝＞ひしゃこうてき, Xã giao, dễ giao thiệp > khó gần</p>
-                            <p>誠実・真摯, せいじつ・しんし, Thành thật, Nghiêm túc</p>
-                            <p>寛容, かんよう, Bao dung</p>
-                            <p>気さく, きさく, Cởi mở, dễ hoà đồng, thẳng thắn</p>
-                            <p>滲み出る, にじみでる, Biểu lộ ra, thấm ra, rỉ ra</p>
-                            <p>個性, こせい, Cá tính</p>
-                            <p>独特, どくとく, Độc đáo</p>
-                            <p>強烈, きょうれつ, Quyết liệt, mạnh mẽ</p>
-                            <p>際立つ・目立つ, きわだつ・めだつ, Nổi bật</p>
-                            <p>重んじる, おもんじる, Coi trọng</p>
-                            <p>育む, はぐくむ, Ấp, nuôi dưỡng</p>
-                            <p>人に懐く, ひとになつく, Thân thiết, quấn quýt với người~</p>
-                            <p>好意を持つ, こういをもつ, Thiện ý, cảm tình tốt</p>
-                            <p>共感する, きょうかんする, Thông cảm (đồng tình)</p>
-                            <p>同情する, どうじょうする, Đồng cảm (cảm thương trước hoàn cảnh của người khác)</p>
-                            <p>反発する, はんぱつする, Phản bác</p>
-                            <p>反感を持つ, はんかんを持つ, Có ác cảm</p>
-                            <p>猛反対, もうはんたい, Phản đối kịch liệt</p>
-                            <p>嫉妬する, しっとする, Lòng ghen tỵ, ghen</p>
-                            <p>気兼ねする, きがねする, Khách khí, câu nệ, gò bò, không thoải mái</p>
-                            <p>人を慕う・崇拝する, ひとをしたう・すうはいする, Tưởng nhớ, ngưỡng mộ / sùng bái</p>
-                            <p>いたわる・励ます, いたわる・はげます, Quan tâm (an ủi)</p>
-                            <p>妬む, ねたむ, Ghen tỵ</p>
-                            <p>軽蔑する, けいべつする, Miệt thị</p>
-                            <p>あざ笑う, あざわらう, Cười đểu, cười khinh</p>
-                            <p>中傷する, ちゅうしょうする, Phỉ báng</p>
-                            <p>侮辱する, ぶじょくする, Lăng mạ, sỉ nhục</p>
-                            <p>庇う, かばう, Bao che, bênh vực ai đó</p>
-                            <p>無愛想, ぶあいそう, Thô thiên, thô lỗ</p>
-                            <p>無遠慮, ぶえんりょ, Tố cáo, báo cáo, tiết lộ / đề xuất đề nghị</p>
-                            <p>申し出る, もうしでる, Miệt thị</p>
-                            <p>届け出る, とどけでる, Nộp đơn, trình báo</p>
-                            <p>猛勉強, もうべんきょう, Học điên cuồng</p>
-                            <p>猛反省, もうはんせい, Kiểm điểm bản thân gay gắt</p>
-                            <p>振り返る, ふりかえる, Tận đáy lòng</p>
-                            <p>心底, しんそこ, Tận đáy lòng</p>
-                            <p>さも＝そのうえ, さも＝そのうえ, Hơn nữa</p>
-                            <p>まさしい, まさしい, Chính xác</p>
-                            <p>根っから, ねっから, Bẩm sinh, bản chất, vốn có</p>
-                            <p>とりあえず = ひとまず, とりあえず = ひとまず, Trước mắt, tạm thời</p>
+                            <p>駆け込む, かけこむ, chạy bổ vào, phóng về, chạy về</p>
+                            <p>放り出す, ほうりだす, quẳng ra, ném đi, vứt</p>
+                            <p>口に押し込む, くちにおしこむ, nhét vào miệng</p>
+                            <p>店舗, てんぽ, cửa hàng, cửa hiệu</p>
+                            <p>店頭, てんとう, trước cửa tiệm</p>
+                            <p>一目見る, ひとめみる, nhìn lướt qua</p>
+                            <p>大好物, だいこうぶつ, món yêu thích</p>
+                            <p>選挙戦, せんきょせん, tranh cử</p>
+                            <p>殺到, さっとう, chen lấn, dồn dập</p>
+                            <p>一口, ひとくち, một miếng</p>
+                            <p>吐き出す, はきだす, nôn ra</p>
+                            <p>請求書, せいきゅうしょ, hóa đơn thanh toán</p>
+                            <p>生き延びる, いきのびる, sống sót</p>
+                            <p>発展途上期, はってんとじょうき, giai đoạn đang phát triển</p>
+                            <p>生き生きとしている, いきいきとしている, sinh động, sống động, tràn đầy sức sống</p>
+                            <p>不況, ふきょう, suy thoái, khủng hoảng kinh tế</p>
+                            <p>売れ行き, うれゆき, doanh số bán hàng</p>
+                            <p>合併, がっぺい, sáp nhập</p>
+                            <p>統合, とうごう, thống nhất</p>
+                            <p>綿密, めんみつ, kỹ lưỡng, chi tiết</p>
+                            <p>自家製, じかせい, sản phẩm nhà làm</p>
+                            <p>気が済む, きがすむ, hài lòng, nhẹ nhõm</p>
+                            <p>縁を切る, えんをきる, cắt đứt quan hệ</p>
+                            <p>公式, こうしき, chính thức</p>
+                            <p>末日, まつじつ, ngày cuối của~</p>
+                            <p>願書, がんしょ, đơn đăng ký thi tuyển, nhập học</p>
+                            <p>遠出, とおで, tham quan, du ngoại, đi chơi xa</p>
+                            <p>几帳面, きちょうめん, ngăn nắp, cẩn thận, đúng giờ</p>
+                            <p>大雑把, おおざっぱ, qua loa, sơ sài, hời hợt, đại khái</p>
+                            <p>きちっとした, きちっとした, chỉnh chu, chính xác, hoàn hảo</p>
+                            <p>雑・いい加減・ルーズ, ざつ・いいかげん・ルーズ, cẩu thả, sơ sài, vô trách nhiệm, lề mề</p>
+                            <p>生真面目＝＞不真面目, きまじめ＝＞ふまじめ, rất nghiêm túc > không nghiêm túc, đứng đắn</p>
+                            <p>品がいい・上品・気品がいい, ひんがいい・じょうひん・きひんがいい, tao nhã, lịch thiệp, thanh lịch</p>
+                            <p>品が悪い・下品, ひんがわるい・げひん, hạ lưu, hạ đẳng, thiếu lịch sự, kém sang, đê tiện</p>
+                            <p>冷淡, れいたん, lạnh lùng, khó ưa</p>
+                            <p>冷酷, れいこく, lạnh lùng, tàn nhẫn</p>
+                            <p>愛想がいい＝＞悪い・無愛想, あいそうがいい・わるい・ぶあいそう, dễ thương, dễ gần, tốt bụng > khó gần, mất cảm tình</p>
+                            <p>社交的＝＞非社交的, しゃこうてき＝＞ひしゃこうてき, xã giao, dễ giao thiệp > khó gần</p>
+                            <p>誠実・真摯, せいじつ・しんし, thành thật, nghiêm túc</p>
+                            <p>寛容, かんよう, bao dung</p>
+                            <p>気さく, きさく, cởi mở, dễ hoà đồng, thẳng thắn</p>
+                            <p>滲み出る, にじみでる, biểu lộ ra, thấm ra, rỉ ra</p>
+                            <p>個性, こせい, cá tính</p>
+                            <p>独特, どくとく, độc đáo</p>
+                            <p>強烈, きょうれつ, quyết liệt, mạnh mẽ</p>
+                            <p>際立つ・目立つ, きわだつ・めだつ, nổi bật</p>
+                            <p>重んじる, おもんじる, coi trọng</p>
+                            <p>育む, はぐくむ, ấp, nuôi dưỡng</p>
+                            <p>人に懐く, ひとになつく, thân thiết, quấn quýt với người~</p>
+                            <p>好意を持つ, こういをもつ, thiện ý, cảm tình tốt</p>
+                            <p>共感する, きょうかんする, thông cảm (đồng tình)</p>
+                            <p>同情する, どうじょうする, đồng cảm (cảm thương trước hoàn cảnh của người khác)</p>
+                            <p>反発する, はんぱつする, phản bác</p>
+                            <p>反感を持つ, はんかんをもつ, có ác cảm</p>
+                            <p>猛反対, もうはんたい, phản đối kịch liệt</p>
+                            <p>嫉妬する, しっとする, lòng ghen tỵ, ghen</p>
+                            <p>気兼ねする, きがねする, khách khí, câu nệ, gò bó, không thoải mái</p>
+                            <p>人を慕う・崇拝する, ひとをしたう・すうはいする, tưởng nhớ, ngưỡng mộ / sùng bái</p>
+                            <p>いたわる・励ます, いたわる・はげます, quan tâm (an ủi)</p>
+                            <p>妬む, ねたむ, ghen tỵ</p>
+                            <p>軽蔑する, けいべつする, miệt thị</p>
+                            <p>あざ笑う, あざわらう, cười đểu, cười khinh</p>
+                            <p>中傷する, ちゅうしょうする, phỉ báng</p>
+                            <p>侮辱する, ぶじょくする, lăng mạ, sỉ nhục</p>
+                            <p>庇う, かばう, bao che, bênh vực ai đó</p>
+                            <p>無愛想, ぶあいそう, thô thiển, thô lỗ</p>
+                            <p>無遠慮, ぶえんりょ, tố cáo, báo cáo, tiết lộ / đề xuất đề nghị</p>
+                            <p>申し出る, もうしでる, miệt thị</p>
+                            <p>届け出る, とどけでる, nộp đơn, trình báo</p>
+                            <p>猛勉強, もうべんきょう, học điên cuồng</p>
+                            <p>猛反省, もうはんせい, kiểm điểm bản thân gay gắt</p>
+                            <p>振り返る, ふりかえる, nhìn lại, hồi tưởng</p>
+                            <p>心底, しんそこ, tận đáy lòng</p>
+                            <p>さも＝そのうえ, さも＝そのうえ, hơn nữa</p>
+                            <p>まさしい, まさしい, chính xác</p>
+                            <p>根っから, ねっから, bẩm sinh, bản chất, vốn có</p>
+                            <p>とりあえず = ひとまず, とりあえず = ひとまず, trước mắt, tạm thời</p>
+                        </div>
+                    </details>
+
+
+                </details>
+                <!-- More weeks -->
+
+                <details class="week">
+                    <summary>week 4</summary>
+                    <details class="day">
+                        <summary>day 1</summary>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">copy all</button>
+                        <div class="kanji-container">
+                            <p>帯状, おびじょう, sọc, kéo dài</p>
+                            <p>地獄, じごく, địa ngục</p>
+                            <p>⼾⼝, とぐち・ここう, cửa (cửa ra vào)</p>
+                            <p>体ごと, からだごと, toàn thân</p>
+                            <p>底なし, そこなし, vô tận, vô đáy</p>
+                            <p>もっぱら, もっぱら, hầu hết, chủ yếu</p>
+                            <p>定説, ていせつ, định thuyết, học thuyết</p>
+                            <p>決死, けっし, quyết tâm</p>
+                            <p>覚悟, かくご, chuẩn bị tinh thần, sẵn sàng</p>
+                            <p>⾶び越える, とびこえる, nhảy qua</p>
+                            <p>普段着, ふだんぎ, áo quần thường ngày</p>
+                            <p>よそいき, よそいき, trang phục mang tính trang trọng</p>
+                            <p>めかしこむ, めかしこむ, lên đồ, chưng diện</p>
+                            <p>エナメル, エナメル, tráng men</p>
+                            <p>それなり, それなり, tương ứng, xứng đáng với, khá khá</p>
+                            <p>慎ましい, つつましい, nhún nhường, giản dị, khiêm tốn</p>
+                            <p>ささやか, ささやか, nhỏ, tầm thường</p>
+                            <p>幸福, こうふく, hạnh phúc</p>
+                            <p>バブル期, バブルき, thời kỳ bong bóng</p>
+                            <p>しゃんと, しゃんと, chỉn chu, nghiêm chỉnh, ngay ngắn</p>
+                            <p>背筋, せすじ, cột sống</p>
+                            <p>着飾る, きかざる, chưng diện, mặc đẹp</p>
+                            <p>異論, いろん, phản đối, bất đồng ý kiến</p>
+                            <p>恩恵, おんけい, ơn huệ, lợi ích</p>
+                            <p>賛同, さんどう, đồng ý, tán thành</p>
+                            <p>インフラ, インフラ, cơ sở hạ tầng</p>
+                            <p>蛇⼝を捻る, じゃぐちをひねる, vặn vòi nước</p>
+                            <p>パニック, パニック, hoảng loạn, hoảng sợ</p>
+                            <p>念頭に, ねんとうに, để tâm, lưu tâm, đặc biệt chú ý</p>
+                            <p>銭湯, せんとう, bồn tắm nước nóng công cộng</p>
+                            <p>そわそわ, そわそわ, bồn chồn, thấp thỏm, phấp phỏng</p>
+                            <p>⽼⼥, ろうじょ, bà lão</p>
+                            <p>⼀堂に会する, いちどうにあいする, tập hợp, tập trung lại ở một nơi</p>
+                            <p>順当, じゅんとう, lẽ thường tình, điều dễ hiểu</p>
+                            <p>しみじみ感じる, しみじみかんじる, cảm nhận sâu sắc, thấm thía</p>
+                            <p>錯覚, さっかく, nhầm tưởng</p>
+                            <p>故に, ゆえに, do đó, kết quả là</p>
+
+
 
 
                         </div>
                     </details>
+
+
                 </details>
-                <!-- More weeks -->
+
+                <details class="week">
+                    <summary>week 3</summary>
+                    <details class="day">
+                        <summary>day 1</summary>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">copy all</button>
+                        <div class="kanji-container">
+                            <p>妻子, さいし, vợ con, thê tử</p>
+                            <p>家庭を築く, かていをきずく, xây dựng gia đình</p>
+                            <p>師弟, してい, thầy trò</p>
+                            <p>師匠, ししょう, sư phụ</p>
+                            <p>弟子, でし, đệ tử</p>
+                            <p>国王, こくおう, nhà vua</p>
+                            <p>側近, そっきん, thuộc hạ, người thân cận</p>
+                            <p>家族ぐるみ, かぞくぐるみ, cả gia đình, toàn bộ gia đình</p>
+                            <p>来賓, らいひん, khách mời</p>
+                            <p>もてなす, もてなす, tiếp đãi, đãi khách</p>
+                            <p>しきたり, しきたり, tiền lệ, phong tục, tập quán</p>
+                            <p>慣習, かんしゅう, phong tục, tập quán</p>
+                            <p>風習, ふうしゅう, phong tục, tập quán</p>
+                            <p>未練, みれん, luyến tiếc, tiếc nuối</p>
+                            <p>執着, しゅうちゃく, quyến luyến, gắn chặt</p>
+                            <p>心が弾む, こころがはずむ, trái tim rộn ràng, vui vẻ</p>
+                            <p>引きずる, ひきずる, níu kéo, kéo lê, lưu luyến</p>
+                            <p>気持ちを切り替える, きもちをきりかえる, thay đổi tâm trạng</p>
+                            <p>ライバル同士, ライバルどうし, đối thủ</p>
+                            <p>敵同士, てきどうし, kẻ địch</p>
+                            <p>街ぐるみ, まちぐるみ, toàn thị trấn, thành phố</p>
+                            <p>打ち解ける, うちとける, nói chuyện cởi mở, thân quen</p>
+                            <p>切り出す, きりだす, mở đầu, bắt đầu</p>
+                            <p>切り上げる, きりあげる, kết thúc, làm tròn số chẵn</p>
+                            <p>急遽, きゅきょ, vội vã, đột xuất</p>
+                            <p>余程, よほど, khá là, tương đối, quá mức</p>
+                            <p>どぎまぎ, どぎまぎ, bối rối, luống cuống</p>
+                            <p>先ごろ, さきごろ, gần đây, vài ngày trước</p>
+                            <p>就任する, しゅうにんする, nhậm chức</p>
+                            <p>円満, えんまん, viên mãn, trọn vẹn</p>
+                            <p>厳か, おごそか, trang trọng, uy nghiêm</p>
+                            <p>なだらか, なだらか, thoai thoải, trôi chảy, không dốc</p>
+                            <p>華やか, はなやか, lộng lẫy, tráng lệ</p>
+                            <p>規制, きせい, quy định</p>
+                            <p>国家思想, こっかしそう, hệ tư tưởng dân tộc</p>
+                            <p>家父長制度, かふちょうせいど, chế độ phụ hệ, gia trưởng</p>
+                            <p>目に見える, めにみえる, rõ ràng, ai cũng thấy, trông thấy</p>
+                            <p>モラル, モラル, đạo đức</p>
+                            <p>支配, しはい, chi phối, kiểm soát, cai trị</p>
+                            <p>美名, びめい, tiếng thơm</p>
+                            <p>見えざる手, みえざるて, bàn tay vô hình, quyền lực</p>
+                            <p>活字, かつじ, chữ in</p>
+                            <p>だとすると, だとすると, nếu vậy thì</p>
+                            <p>主体性, しゅたいせい, tính độc lập, tính cá nhân</p>
+                            <p>価値観, かちかん, giá trị quan</p>
+                            <p>築き上げる, きずきあげる, xây dựng lên</p>
+                            <p>どうか, どうか, nhất định</p>
+                            <p>尊ぶ, とうとぶ, coi trọng, đánh giá cao</p>
+                        </div>
+                    </details>
+                </details>
+
+                <details class="week">
+                    <summary>week 3</summary>
+                    <details class="day">
+                        <summary>day 1</summary>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">copy all</button>
+                        <div class="kanji-container">
+                            <p>妻子, さいし, vợ con, thê tử</p>
+                            <p>家庭を築く, かていをきずく, xây dựng gia đình</p>
+                            <p>師弟, してい, thầy trò</p>
+                            <p>師匠, ししょう, sư phụ</p>
+                            <p>弟子, でし, đệ tử</p>
+                            <p>国王, こくおう, nhà vua</p>
+                            <p>側近, そっきん, thuộc hạ, người thân cận</p>
+                            <p>家族ぐるみ, かぞくぐるみ, cả gia đình, toàn bộ gia đình</p>
+                            <p>来賓, らいひん, khách mời</p>
+                            <p>もてなす, もてなす, tiếp đãi, đãi khách</p>
+                            <p>しきたり, しきたり, tiền lệ, phong tục, tập quán</p>
+                            <p>慣習, かんしゅう, phong tục, tập quán</p>
+                            <p>風習, ふうしゅう, phong tục, tập quán</p>
+                            <p>未練, みれん, luyến tiếc, tiếc nuối</p>
+                            <p>執着, しゅうちゃく, quyến luyến, gắn chặt</p>
+                            <p>心が弾む, こころがはずむ, trái tim rộn ràng, vui vẻ</p>
+                            <p>引きずる, ひきずる, níu kéo, kéo lê, lưu luyến</p>
+                            <p>気持ちを切り替える, きもちをきりかえる, thay đổi tâm trạng</p>
+                            <p>ライバル同士, ライバルどうし, đối thủ</p>
+                            <p>敵同士, てきどうし, kẻ địch</p>
+                            <p>街ぐるみ, まちぐるみ, toàn thị trấn, thành phố</p>
+                            <p>打ち解ける, うちとける, nói chuyện cởi mở, thân quen</p>
+                            <p>切り出す, きりだす, mở đầu, bắt đầu</p>
+                            <p>切り上げる, きりあげる, kết thúc, làm tròn số chẵn</p>
+                            <p>急遽, きゅきょ, vội vã, đột xuất</p>
+                            <p>余程, よほど, khá là, tương đối, quá mức</p>
+                            <p>どぎまぎ, どぎまぎ, bối rối, luống cuống</p>
+                            <p>先ごろ, さきごろ, gần đây, vài ngày trước</p>
+                            <p>就任する, しゅうにんする, nhậm chức</p>
+                            <p>円満, えんまん, viên mãn, trọn vẹn</p>
+                            <p>厳か, おごそか, trang trọng, uy nghiêm</p>
+                            <p>なだらか, なだらか, thoai thoải, trôi chảy, không dốc</p>
+                            <p>華やか, はなやか, lộng lẫy, tráng lệ</p>
+                            <p>規制, きせい, quy định</p>
+                            <p>国家思想, こっかしそう, hệ tư tưởng dân tộc</p>
+                            <p>家父長制度, かふちょうせいど, chế độ phụ hệ, gia trưởng</p>
+                            <p>目に見える, めにみえる, rõ ràng, ai cũng thấy, trông thấy</p>
+                            <p>モラル, モラル, đạo đức</p>
+                            <p>支配, しはい, chi phối, kiểm soát, cai trị</p>
+                            <p>美名, びめい, tiếng thơm</p>
+                            <p>見えざる手, みえざるて, bàn tay vô hình, quyền lực</p>
+                            <p>活字, かつじ, chữ in</p>
+                            <p>だとすると, だとすると, nếu vậy thì</p>
+                            <p>主体性, しゅたいせい, tính độc lập, tính cá nhân</p>
+                            <p>価値観, かちかん, giá trị quan</p>
+                            <p>築き上げる, きずきあげる, xây dựng lên</p>
+                            <p>どうか, どうか, nhất định</p>
+                            <p>尊ぶ, とうとぶ, coi trọng, đánh giá cao</p>
+                        </div>
+                    </details>
+                </details>
+
+
             </div>
         </div>
 
