@@ -86,6 +86,7 @@ function selectAnswer(selected, correct, isMeaningQuestion) {
             incorrectQuestions.push(currentKanji);
         }
 
+        // Increment incorrect attempts count
         const key = `${currentKanji.kanji}-${isMeaningQuestion ? 'meaning' : 'reading'}`;
         if (incorrectAttempts[key]) {
             incorrectAttempts[key].count++;
@@ -109,7 +110,13 @@ function updateRating() {
     const progressBar = document.getElementById('progress-bar');
     progressBar.value = percentage;
 
-    if (percentage === 100) {
+    if (percentage < 50) {
+        document.querySelector('.rating-container').classList.add('low-score');
+    } else {
+        document.querySelector('.rating-container').classList.remove('low-score');
+    }
+
+    if (percentage >= 100) {
         displayIncorrectBoard();
     }
 }
@@ -117,6 +124,11 @@ function updateRating() {
 // Display Incorrect Board
 function displayIncorrectBoard() {
     const incorrectBoardContainer = document.getElementById('incorrect-board-container');
+    incorrectBoardContainer.style.display = 'block';
+}
+
+// Update Incorrect Board
+function updateIncorrectBoard() {
     const incorrectBoard = document.getElementById('incorrect-board');
     incorrectBoard.innerHTML = '';
 
@@ -127,15 +139,12 @@ function displayIncorrectBoard() {
         entryElement.innerText = `${entry.kanji} (${entry.type}) - Incorrect: ${entry.count} times`;
         incorrectBoard.appendChild(entryElement);
     });
-
-    incorrectBoardContainer.style.display = 'block';
 }
 
 // Hide Incorrect Board
 function hideIncorrectBoard() {
     const incorrectBoardContainer = document.getElementById('incorrect-board-container');
     incorrectBoardContainer.style.display = 'none';
-    startQuiz();  // Restart the quiz
 }
 
 // Update Kanji data based on pasted input
@@ -186,7 +195,7 @@ document.getElementById('next-button').addEventListener('click', () => {
             currentQuestionIndex = 0;
             shuffleArray(kanjiData);
         } else {
-            alert("All questions answered correctly!");
+            alert("all questions answered correctly!");
             return;
         }
     }
