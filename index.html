@@ -3,12 +3,35 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<div id="login-container">
+    <h2>login</h2>
+    <form id="login-form" onsubmit="handleLogin(event)">
+        <label for="username">username:</label>
+        <input type="text" id="username" required>
+        <label for="password">password:</label>
+        <input type="password" id="password" required>
+        <button type="submit">login</button>
+        <h3><p>note: please do not use personal or sensitive passwords. </p>
+        <p>this system is for storing quiz results and is not secure for sensitive information.</p></h3>
+    </form>
+</div>
+
+<!-- <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanji Quiz</title>
     <link rel="stylesheet" href="style.css">
-</head>
+</head> -->
+
+
+
+<div id="quiz-container" style="display:none;">
+    <h2>welcome, <span id="welcome-user"></span>!</h2>
+    <button onclick="logout()">logout</button>
+    <h3>your past results:</h3>
+    <div id="results-container"></div>
+</div>
+
 
 <body>
     <div id="incorrect-board-container" style="display: none;">
@@ -39,19 +62,20 @@
 
     <!-- Update Data Section -->
     <div class="quiz-section">
-        <textarea id="bulk-input" placeholder="paste what you want to learn here"></textarea>
+        <textarea id="bulk-input" placeholder="paste data in the format 'kanji, reading, meaning'. one entry per line. update data and refresh then you're good to go."></textarea>
 
     </div>
     <button id="update-button">update data</button>
 
-    <!-- Show Current Data -->
+    <!-- Show current data -->
     <div class="quiz-section">
         <button class="spoiler-button" onclick="toggleSpoiler()">show current data</button>
+        <div></div>
         <div class="spoiler">
             <textarea id="kanji-list" readonly></textarea>
         </div>
     </div>
-    <!-- Show To-learn-list -->
+    <!-- Show kanji list -->
 
     <div class="quiz-section">
 
@@ -67,8 +91,8 @@
                     <summary>week 1</summary>
                     <details class="day">
                         <summary>day 1</summary>
-                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                        <div>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">copy all</button>
+                        <div class="kanji-container">
                             <p>駆け込む, かけこむ, Chạy bổ vào, phóng về, chạy về</p>
                             <p>放り出す, ほうりだす, Quẳng ra, ném đi, vứt</p>
                             <p>口に押し込む, くちにおしこむ, Nhét vào miệng</p>

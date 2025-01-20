@@ -3,25 +3,33 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #2e2e2e;  /* Default dark background */
+    background-color: #2e2e2e; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     gap: 30px;
     padding-top: 50px;
-    color: #f0f0f0;  /* Default light text */
+    color: #f0f0f0;  
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1 {
     font-size: 2.5rem;
-    color: #f0f0f0;  /* Default light text */
+    font-family:'Montserrat', sans-serif;
+    font-weight:300;
+    color: #f0f0f0; 
     margin-bottom: 20px;
     text-align: center;
     font-weight: 500;
     text-transform: uppercase;
     transition: color 0.3s ease;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight:x-small;
 }
 
 /* Dark Mode Styles */
@@ -134,8 +142,7 @@ button.dark-mode:hover {
     font-family: 'Courier New', monospace;
     font-size: 1.1rem;
     border-radius: 8px;
-    border: 1px solid #ddd;
-    background-color: #f7f7f7;
+    background-color: #9e9e9e;
     transition: all 0.3s ease;
     box-sizing: border-box;
 }
@@ -151,18 +158,23 @@ button.dark-mode:hover {
 }
 
 .spoiler {
-    display: none;
-    margin-top: 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+.spoiler.open {
+    max-height: 10000px; 
 }
 
 .spoiler-button {
     cursor: pointer;
 
     color: #ffffff;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
-/* Sample Data Section */
+
 .sample-data {
     margin-top: 30px;
     background-color: #f7f7f72a;
@@ -174,7 +186,7 @@ button.dark-mode:hover {
     box-sizing: border-box;
 }
 
-/* Dark Mode Textarea */
+
 textarea.dark-mode {
     background-color: #3c3c3c;
     color: #f0f0f0;
@@ -205,7 +217,7 @@ textarea.dark-mode {
 .to-learn-list-content {
     display: none;
     margin-top: 20px;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Spoiler Button */
@@ -259,7 +271,7 @@ details[open] summary {
 /* When the spoiler is open, we add opacity and max-height */
 .to-learn-list-content.open {
     opacity: 1;
-    max-height: 10000px; /* You can adjust this if needed */
+    max-height: 10000px;
 }
 
 /* Spoiler Button */
@@ -296,7 +308,7 @@ summary {
 }
 
 details[open] summary {
-    color: #4CAF50; /* Green when open */
+    color: #2e2e2e; 
 }
 
 /* Card-style Layout for Kanji Data */

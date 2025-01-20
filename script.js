@@ -27,7 +27,7 @@ function loadQuestion() {
     const isMeaningQuestion = Math.random() < 0.5;
 
     if (isMeaningQuestion) {
-        questionElement.innerText = `${currentKanji.kanji}?`;
+        questionElement.innerText = `${currentKanji.kanji}`;
         let answerChoices = kanjiData.filter(kanji => kanji.meaning !== currentKanji.meaning);
         shuffleArray(answerChoices);
         answerChoices = answerChoices.slice(0, 3).map(kanji => kanji.meaning);
@@ -42,7 +42,7 @@ function loadQuestion() {
             choicesElement.appendChild(choiceElement);
         });
     } else {
-        questionElement.innerText = `${currentKanji.kanji}?`;
+        questionElement.innerText = `${currentKanji.kanji}`;
         let answerChoices = kanjiData.filter(kanji => kanji.reading !== currentKanji.reading);
         shuffleArray(answerChoices);
         answerChoices = answerChoices.slice(0, 3).map(kanji => kanji.reading);
@@ -153,7 +153,7 @@ document.getElementById('update-button').addEventListener('click', () => {
     const lines = bulkInput.split('\n');
 
     if (lines.length === 0 || !bulkInput) {
-        alert("Please paste valid data in the input field.");
+        alert("please paste valid data in the input field");
         return;
     }
 
@@ -236,7 +236,20 @@ startQuiz();
 // Toggle the visibility of the spoiler
 function toggleSpoiler() {
     const spoiler = document.querySelector('.spoiler');
-    spoiler.style.display = (spoiler.style.display === 'block') ? 'none' : 'block';
+
+
+    if (spoiler.style.display === "none" || spoiler.style.display === "") {
+        spoiler.style.display = "block";
+        setTimeout(() => {
+            spoiler.classList.add("open");
+        }, 10);
+    } else {
+        spoiler.classList.remove("open");
+        setTimeout(() => {
+            spoiler.style.display = "none";
+        }, 500);
+    }
+
 }
 
 // Function to toggle visibility of To-Learn List with a smooth effect
@@ -277,11 +290,69 @@ function copyToClipboard(button) {
         document.body.removeChild(textArea);
 
         // Optional: Provide feedback to the user
-        button.innerText = 'Copied!';
+        button.innerText = 'copied!';
         setTimeout(() => {
-            button.innerText = 'Copy';
+            button.innerText = 'copy all';
         }, 1500); // Reset button text after 1.5 seconds
     } else {
-        console.error('Kanji container not found or incorrect structure.');
+        console.error('kanji container not found or incorrect structure');
     }
+}
+
+function handleLogin(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    let users = JSON.parse(localStorage.getItem('users')) || {};
+    
+    if (users[username]) {
+        if (users[username].password === password) {
+            showQuizContainer(username);
+        } else {
+            alert('incorrect password!');
+        }
+    } else {
+        users[username] = { password: password, results: [] };
+        localStorage.setItem('users', JSON.stringify(users));
+        alert('new user registered and logged in!');
+        showQuizContainer(username);
+    }
+}
+
+function showQuizContainer(username) {
+    document.getElementById('login-container').style.display = 'none';
+    document.getElementById('quiz-container').style.display = 'block';
+    document.getElementById('welcome-user').innerText = username;
+    loadUserResults(username);
+}
+
+function loadUserResults(username) {
+    const users = JSON.parse(localStorage.getItem('users'));
+    const resultsContainer = document.getElementById('results-container');
+    resultsContainer.innerHTML = '';
+    
+    if (users[username].results.length > 0) {
+        users[username].results.forEach(result => {
+            const resultItem = document.createElement('p');
+            resultItem.textContent = `past quiz result: ${result}`;
+            resultsContainer.appendChild(resultItem);
+        });
+    } else {
+        resultsContainer.textContent = 'no quiz results yet.';
+    }
+}
+
+function logout() {
+    document.getElementById('quiz-container').style.display = 'none';
+    document.getElementById('login-container').style.display = 'block';
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+}
+
+function saveQuizResult(username, result) {
+    const users = JSON.parse(localStorage.getItem('users'));
+    users[username].results.push(result);
+    localStorage.setItem('users', JSON.stringify(users));
+    loadUserResults(username);
 }
