@@ -257,22 +257,32 @@ function toggleToLearnList() {
 
 // Function to copy the content of the day to the clipboard in the quiz data format
 function copyToClipboard(button) {
+    // Find the parent div containing the kanji data (all the <p> elements)
     const dayContent = button.previousElementSibling;
 
-    const contentToCopy = Array.from(dayContent.getElementsByTagName('p'))
-                               .map(p => p.innerText)
-                               .join("\n");
+    // Create a temporary text area to copy the content
+    const textArea = document.createElement('textarea');
+    
+    // Get all text content from the <p> tags inside the day
+    textArea.value = Array.from(dayContent.getElementsByTagName('p'))
+                          .map(p => p.innerText)  // Get the text inside each <p> element
+                          .join("\n");           // Join them with line breaks
 
-    const formattedContent = contentToCopy.replace(/、/g, ',');
+    // Format the copied content to match the quiz data format (no extra spaces)
+    textArea.value = textArea.value.replace(/、/g, ',');  // Replace full stops with commas
 
-    navigator.clipboard.writeText(formattedContent)
-        .then(() => {
-            button.innerText = 'Copied!';
-            setTimeout(() => {
-                button.innerText = 'Copy';
-            }, 1500);
-        })
-        .catch(err => {
-            console.error('Error copying to clipboard: ', err);
-        });
+    document.body.appendChild(textArea);
+
+    // Select the text and copy it to the clipboard
+    textArea.select();
+    document.execCommand('copy');
+
+    // Remove the temporary text area after copying
+    document.body.removeChild(textArea);
+
+    // Optional: Provide feedback to the user
+    button.innerText = 'Copied!';
+    setTimeout(() => {
+        button.innerText = 'Copy';
+    }, 1500); // Reset button text after 1.5 seconds
 }
