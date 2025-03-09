@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let wrongQuestions = [];
     let completedSets = loadProgress(); // Load saved progress or initialize new Map
 
-    redoButton.textContent = 'Redo Wrong Questions';
+    redoButton.textContent = '間違えた問題をやり直す';
     redoButton.className = 'redo-button';
     redoButton.style.display = 'none';
     document.body.appendChild(redoButton);

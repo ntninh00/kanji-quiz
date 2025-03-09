@@ -140,7 +140,7 @@ body {
     font-weight: 600;
     margin-right: 10px; /* Space between ID and question */
 }
-.redo-button:hover,
+
 .done-button:hover {
     transform: scale(1.02);
 }
